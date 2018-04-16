@@ -34,14 +34,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 progressBar.setProgress((int) millisUntilFinished / 1000);
-                textView.setText("" + ((millisUntilFinished / 1000) - 1));
+                textView.setText("" + ((millisUntilFinished / 1000)));
             }
 
             @Override
             public void onFinish() {
-                progressBar.setProgress(60f);
-                start.setEnabled(true);
-                stop.setEnabled(false);
+                reset();
             }
         }.start();
         start.setEnabled(false);
@@ -50,9 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void stopTimer(View view) {
         countDownTimer.cancel();
-        textView.setText("60");
-        progressBar.setProgress(60f);
+        reset();
+    }
+
+    void reset() {
         start.setEnabled(true);
+        progressBar.setProgress(60f);
+        textView.setText("60");
         stop.setEnabled(false);
     }
 }
