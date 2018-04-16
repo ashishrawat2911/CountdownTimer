@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 progressBar.setProgress(60f);
+                start.setEnabled(true);
+                stop.setEnabled(false);
             }
         }.start();
         start.setEnabled(false);
